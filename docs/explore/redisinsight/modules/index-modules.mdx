@@ -1,0 +1,79 @@
+---
+id: index-modules
+title: Using Redis Modules using RedisInsight
+sidebar_label: Using Redis Modules
+slug: /explore/redisinsight/modules
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import RedisCard from '@site/src/theme/RedisCard';
+
+A full-featured desktop GUI client, RedisInsight is an essential tool for Redis developers. It is a lightweight multi-platform management visualization tool that helps you design, develop, and optimize your application capabilities in a single easy-to-use environment. RedisInsight not just makes it easier to interact with your databases and manage your data, but also helps in managing Redis Cluster with ease.
+
+## Getting Started with Redis Cluster
+
+Redis Cluster is an active-passive cluster implementation that consists of master and slave nodes. There are two kinds of nodes: master and slave nodes. To get started with Redis Cluster, follow the below steps to build 3 Master and 3 Replicas. Please Note: In redis, slave nodes are generally called replicas as they hold the replicated slots that their masters have.
+ 
+## Step 1. Install Redis from source
+
+Follow https://developer.redislabs.com/create/from-source/ to build Redis from source
+
+## Step 2: Executing the create-cluster script to setup 3 Master and 3 Replicas Cluster
+
+ ```bash
+  cd /utils/create-cluster
+  ./create-cluster start
+ ```
+
+ ```bash
+  Starting 30001
+  Starting 30002
+  Starting 30003
+  Starting 30004
+  Starting 30005
+  Starting 30006
+ ```
+
+## Step 3. Access Redis Instance running on Port 30001 
+
+ ```bash
+  redis-cli -c -p 30001
+  127.0.0.1:30001> set foo bar
+  -> Redirected to slot [12182] located at 127.0.0.1:30003
+  OK
+  127.0.0.1:30003>
+ ```
+
+
+## Step 4. Verify the cluster nodes:
+
+ ```
+  cluster nodes
+  b37c153b7cb63a863b51fa08bdde46bfda9c6a98 127.0.0.1:30005@40005 slave 3e85f061bebd9b566e1cbf7f03cbe3e1859babbc 0 1620304753134 3 connected
+  8a1a0ba49e1845feff5314fbb8b73a2ec99e3647 127.0.0.1:30001@40001 master - 0 1620304753033 1 connected 0-5460
+  bd7326d7b907a04214372fe41189e41763a1e1df 127.0.0.1:30006@40006 slave 8a1a0ba49e1845feff5314fbb8b73a2ec99e3647 0 1620304753033 1 connected
+  3e85f061bebd9b566e1cbf7f03cbe3e1859babbc 127.0.0.1:30003@40003 myself,master - 0 1620304753000 3 connected 10923-16383
+  67bbe43901031fa4bfe4cee6105d284f4fe7733b 127.0.0.1:30002@40002 master - 0 1620304753033 2 connected 5461-10922
+  0e3fb1de10b722458c959b35f1468275c34ba49f 127.0.0.1:30004@40004 slave 67bbe43901031fa4bfe4cee6105d284f4fe7733b 0 1620304753134 2 connected
+ ```
+
+
+## Step 5: Set Protected mode off
+
+ ```bash
+  redis-cli -c -p 30001
+  127.0.0.1:30001> CONFIG SET protected-mode no
+  OK
+  127.0.0.1:30001> exit
+ ```
+
+
+
+## Step 6: Connecting RedisInsight to Redis database
+
+Follow https://developer.redislabs.com/explore/redisinsight/ to install RedisInsight on your local system.
+ 
+ 
+

@@ -40,11 +40,25 @@ module.exports = {
       label: 'Explore',
       items: [
         'explore/index-explore',
-        'explore/redisinsight/index-redisinsight',
         'explore/redisdatasource/index-redisdatasource',
         'explore/redismod/index-redismod',
         'explore/riot/index-riot',
-      ]
+        {
+         type: 'category',
+         label: 'RedisInsight',
+         items: [
+          'explore/redisinsight/index-redisinsight',
+          'explore/redisinsight/cluster/index-cluster',
+          'explore/redisinsight/performance/index-performance',
+          'explore/redisinsight/profiler/index-profiler',
+          'explore/redisinsight/slowlog/index-slowlog',
+          'explore/redisinsight/serialized/index-serialized',
+          'explore/redisinsight/modules/index-modules',
+          'explore/redisinsight/discovery/index-discovery',
+          'explore/redisinsight/bulkactions/index-bulkactions',
+        ] 
+        },
+     ]
     },
     {
       type: 'category',
