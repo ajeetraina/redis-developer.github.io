@@ -48,14 +48,10 @@ module.exports = {
          label: 'RedisInsight',
          items: [
           'explore/redisinsight/index-redisinsight',
-          'explore/redisinsight/cluster/index-cluster',
-          'explore/redisinsight/performance/index-performance',
-          'explore/redisinsight/profiler/index-profiler',
+          'explore/redisinsight/browser/index-browser',
           'explore/redisinsight/slowlog/index-slowlog',
-          'explore/redisinsight/serialized/index-serialized',
-          'explore/redisinsight/modules/index-modules',
-          'explore/redisinsight/discovery/index-discovery',
-          'explore/redisinsight/bulkactions/index-bulkactions',
+          'explore/redisinsight/memoryanalyzer/index-memoryanalyzer',
+          'explore/redisinsight/cluster/index-cluster',
         ] 
         },
      ]
